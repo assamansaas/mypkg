@@ -12,9 +12,10 @@ colcon build || { echo "Error: Build failed."; exit 1; }
 source install/setup.bash
 
 log_file="/tmp/omikuji_test.log"
-timeout 30 ros2 run mypkg omikuji > "$log_file"
+timeout 10 ros2 run mypkg talker > "$log_file"
 
-if grep -Eq '大吉|中吉|小吉|吉|末吉|凶' "$log_file"; then
+if grep -q -E '大吉|中吉|小吉|吉|末吉|凶' "$log_file"; then
+    echo "Omikuji results found in logs:"
     grep -E '大吉|中吉|小吉|吉|末吉|凶' "$log_file"
 else
     echo "No omikuji results found in logs."
