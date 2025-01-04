@@ -20,7 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'omikuji = mypkg.omikuji:main',
+            'talker = mypkg.omikuji:main',
             'listener = mypkg.listener:main',
         ],
     },
