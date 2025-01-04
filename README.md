@@ -43,6 +43,9 @@ ros2 topic echo /omikuji
 旅行: 慎重に計画を練ると良い
 恋愛: 気になる人から連絡が来る
 ```
+## 参考文献
+- https://docs.ros.org/en/rolling/Tutorials.html
+- https://docs.python.org/ja/3/library/random.html
 ## テスト環境
 - ubuntu 22.04 LTS
 	- ROS2
