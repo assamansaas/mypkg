@@ -11,14 +11,13 @@ class OmikujiPublisher(Node):
     def __init__(self):
         super().__init__('omikuji_publisher')
         self.publisher_ = self.create_publisher(String, '/omikuji', 10)
-        self.timer = self.create_timer(1.0, self.publish_omikuji)  # 1秒ごとに結果を送信
-        
-        # おみくじの結果のリスト（大吉、中吉、小吉、凶、大凶）
+        self.timer = self.create_timer(1.0, self.publish_omikuji)
+
         self.omikuji_results = [
             "大吉", "中吉", "小吉", "吉", "末吉", "凶", "大凶"
         ]
         
-        # 各項目の結果（待ち人、失せ物、旅行、恋愛）
+
         self.omikuji_items = {
             "待ち人": [
                 "来るべし", "来ないかもしれない", "遅れてくる", "全く来ない"
@@ -38,15 +37,13 @@ class OmikujiPublisher(Node):
         }
 
     def publish_omikuji(self):
-        # 大吉～大凶をランダムに選択
+
         omikuji_result = random.choice(self.omikuji_results)
-        
-        # 結果を組み立てる
+
         result = f"{omikuji_result}\n"
         for item, options in self.omikuji_items.items():
             result += f"{item}: {random.choice(options)}\n"
-        
-        # メッセージを送信
+
         msg = String()
         msg.data = result
         self.publisher_.publish(msg)
