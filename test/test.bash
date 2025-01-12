@@ -7,7 +7,7 @@ dir=~
 [ "$1" != "" ] && dir="$1"
 
 # ROS 2 ワークスペースに移動してビルド
-cd $dir/ros2_ws
+cd $dir/mypkg/ros2_ws
 colcon build
 source $dir/.bashrc
 
@@ -15,6 +15,6 @@ source $dir/.bashrc
 timeout 10 ros2 launch mypkg talk_listen.launch.py > /tmp/mypkg.log
 
 # ログファイルを確認
-cat /tmp/mypkg.log |
-grep 'weather:'
+cat /tmp/mypkg.log | grep 'weather:'
+
 
