@@ -1,23 +1,19 @@
 #!/bin/bash
-# SPDX-FileCopyrightText: 2024 Masahiro Yasui
+# SPDX-FileCopyrightText: 2025 Masahiro Yasui
 # SPDX-License-Identifier: BSD-3-Clause
 
+# 引数で指定されたディレクトリに移動
 dir=~
 [ "$1" != "" ] && dir="$1"
 
-cd "$dir/ros2_ws" || { echo "Error: Directory $dir/ros2_ws not found."; exit 1; }
+# ROS 2 ワークスペースに移動してビルド
+cd $dir/mypkg/ros2_ws
+colcon build
+source $dir/.bashrc
 
-colcon build || { echo "Error: Build failed."; exit 1; }
+# 天気予報ノードを 10 秒間実行してログを保存
+timeout 10 ros2 launch mypkg talk_listen.launch.py > /tmp/mypkg.log
 
-source install/setup.bash
-
-log_file="/tmp/omikuji_test.log"
-timeout 30 ros2 run mypkg omikuji > "$log_file"
-
-if grep -q -E '大吉|中吉|小吉|吉|末吉|凶' "$log_file"; then
-    echo "Omikuji results found in logs:"
-    grep -E '大吉|中吉|小吉|吉|末吉|凶' "$log_file"
-else
-    echo "No omikuji results found in logs."
-fi
+# ログファイルを確認
+cat /tmp/mypkg.log | grep 'weather:'
 

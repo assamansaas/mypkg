@@ -40,10 +40,10 @@ class WeatherForecastNode(Node):
         weather, temperature, humidity = self.get_weather_data()
 
         # フォーマットされた文字列を作成
-        forecast_message = f"天気: {weather}, 気温: {temperature:.2f}°C, 湿度: {humidity:.2f}%"
+        forecast_message = f"weather: {weather}, 気温: {temperature:.2f}°C, 湿度: {humidity:.2f}%"
 
         # ログに表示（確認用）
-        self.get_logger().info(f"パブリッシュ: {forecast_message}")
+        # self.get_logger().info(f"weather: {forecast_message}")
 
         # パブリッシュ
         self.weather_pub.publish(String(data=forecast_message))
