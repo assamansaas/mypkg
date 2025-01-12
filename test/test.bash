@@ -15,6 +15,7 @@ source $dir/.bashrc
 timeout 30 ros2 launch mypkg talk_listen.launch.py > /tmp/mypkg.log
 
 # ログファイルを確認
-cat /tmp/mypkg.log | grep 'weather:'
+cat /tmp/mypkg.log |
+grep weather:
 
 
