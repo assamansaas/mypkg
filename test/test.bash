@@ -12,7 +12,7 @@ colcon build
 source $dir/.bashrc
 
 # 天気予報ノードを 10 秒間実行してログを保存
-timeout 10 ros2 launch mypkg talk_listen.launch.py > /tmp/mypkg.log
+timeout 30 ros2 launch mypkg talk_listen.launch.py > /tmp/mypkg.log
 
 # ログファイルを確認
 cat /tmp/mypkg.log | grep 'weather:'
