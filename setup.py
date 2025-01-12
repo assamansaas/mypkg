@@ -25,7 +25,6 @@ setup(
         'console_scripts': [
             'talker = mypkg.weather:main',
             'listener = mypkg.listener:main',
-            'test = test.test.bash:main',
         ],
     },
 )
