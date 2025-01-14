@@ -10,7 +10,11 @@ jobs:
         run: |
           rsync -av ./ /root/ros2_ws/src/mypkg/
           cd /root/ros2_ws/src/mypkg/
+
+          rosdep update
+          rosdep install -i --from-path src --rosdistro humble -y
+
           apt-get update
           apt-get install -y python3-pip
-          pip3 install requests
+          pip install requests
           bash -xv ./src/mypkg/test/test.bash /root
