@@ -10,6 +10,8 @@ jobs:
         run: |
           rsync -av ./ /root/ros2_ws/src/mypkg/
           cd /root/ros2_ws
-          apt-get install -y pip
+          mkdir -p /root/.cache/pip
+          chown -R root:root /root/.cache/pip
+          apt-get update && apt-get install -y python3-pip
           pip install requests
           bash -xv ./src/mypkg/test/test.bash /root
