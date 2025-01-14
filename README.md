@@ -2,10 +2,10 @@
 ## 概要
 - このros2パッケージは，Current Weather Data APIより，現在の東京の天気をトピックにパブリッシュします．
 ## ノード概要
-### - weather_publisherノード
+### weather_publisherノード
 取得した天気情報を1秒ごとにweather_forecastトピックにパブリッシュします．パブリッシュする内容は天気，気温，湿度です．
 ## トピック概要
-### - weather_forecast
+### weather_forecast
 weather_publisherノードからパブリッシュされた以下の情報を含みます．
 ```
 weather: <weather>, temperature: <temperature>°C, humidity: <humidity>%
@@ -34,8 +34,8 @@ listener.py, talk_liten.launch.pyはテストように作成したものです�
 ## 参考文献
 - 
 ## テスト環境
-OS: Ubuntu 22.04 LTS
-ROS2バージョン:humble
+- OS: Ubuntu 22.04 LTS
+- ROS2バージョン:humble
 ## ライセンス
 - このソフトウェアパッケージは，3条項BSDライセンスの下，再分布および使用が許可されます．
 - このパッケージのコードの一部は，下記のスライド（CC-BY-SA by Ryuichi Ueda）のものを，本人の許可を得て自身の著作としたものです．
