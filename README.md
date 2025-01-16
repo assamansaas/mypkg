@@ -32,7 +32,9 @@ data: 'weather: 晴天, temperature: 7.49°C, humidity: 53.00%'
 ## 注意点
 listener.py, talk_liten.launch.pyはテストように作成したものです．
 ## 参考文献
-- 
+- https://qiita.com/myasu/items/87ee6a208f4af615e653
+- https://openweathermap.org/api
+- https://magazine.techacademy.jp/magazine/19195
 ## テスト環境
 - OS: Ubuntu 22.04 LTS
 - ROS2バージョン:humble

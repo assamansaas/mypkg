@@ -11,7 +11,6 @@ jobs:
           rsync -av ./ /root/ros2_ws/src/mypkg/
           cd /root/ros2_ws
         
-          apt-get update
-          apt-get install -y python3-pip
-          pip3 install requests
+          apt-get install -y pip
+          pip install requests
           bash -xv ./src/mypkg/test/test.bash /root
