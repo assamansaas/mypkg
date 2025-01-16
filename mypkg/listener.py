@@ -11,7 +11,6 @@ class WeatherSubscriberNode(Node):
     def __init__(self):
         super().__init__('weather_subscriber')
 
-        #サブスクライバの作成
         self.weather_sub = self.create_subscription(
             String,
             'weather_forecast',
@@ -20,7 +19,7 @@ class WeatherSubscriberNode(Node):
         )
 
     def callback(self, msg):
-        # 受信したメッセージをログに表示
+
         self.get_logger().info(f"{msg.data}")
 
 

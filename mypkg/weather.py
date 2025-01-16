@@ -12,18 +12,14 @@ class WeatherForecastNode(Node):
     def __init__(self):
         super().__init__('weather_forecast')
 
-        # パブリッシャー
         self.weather_pub = self.create_publisher(String, 'weather_forecast', 10)
 
-        # タイマー
         self.timer = self.create_timer(1.0, self.publish_forecast)
 
-        # OpenWeatherMap APIキーと都市名
         self.api_key = "3d30831cdb2eefd3dcb465577309f7d5"
         self.city = "Tokyo,JP"
 
     def get_weather_data(self):
-        """OpenWeatherMap APIから天気データを取得"""
         url = f"http://api.openweathermap.org/data/2.5/weather?q={self.city}&appid={self.api_key}&units=metric&lang=ja"
         response = requests.get(url)
 
@@ -38,16 +34,10 @@ class WeatherForecastNode(Node):
             return "不明", 0.0, 0.0
 
     def publish_forecast(self):
-        """フォーマットされた天気情報をパブリッシュ"""
         weather, temperature, humidity = self.get_weather_data()
 
-        # フォーマットされた文字列を作成
-        forecast_message = f"weather: {weather}, 気温: {temperature:.2f}°C, 湿度: {humidity:.2f}%"
+        forecast_message = f"weather: {weather}, temperature: {temperature:.2f}°C, humidity: {humidity:.2f}%"
 
-        # ログに表示（確認用）
-        # self.get_logger().info(f"weather: {forecast_message}")
-
-        # パブリッシュ
         self.weather_pub.publish(String(data=forecast_message))
 
 
