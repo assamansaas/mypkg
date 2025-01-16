@@ -25,9 +25,9 @@ class WeatherForecastNode(Node):
 
         if response.status_code == 200:
             data = response.json()
-            weather = data['weather'][0]['description']  # 天気
-            temperature = data['main']['temp']  # 気温
-            humidity = data['main']['humidity']  # 湿度
+            weather = data['weather'][0]['description']
+            temperature = data['main']['temp']
+            humidity = data['main']['humidity']
             return weather, temperature, humidity
         else:
             self.get_logger().warn(f"天気データの取得に失敗しました: {response.status_code}")
