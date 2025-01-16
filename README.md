@@ -30,7 +30,7 @@ data: 'weather: 晴天, temperature: 7.49°C, humidity: 53.00%'
 ---
 ```
 ## 注意点
-listener.py, talk_liten.launch.pyはテストように作成したものです．
+listener.py, talk_liten.launch.pyはテスト用に作成したものです．
 ## 参考文献
 - https://qiita.com/myasu/items/87ee6a208f4af615e653
 - https://openweathermap.org/api
